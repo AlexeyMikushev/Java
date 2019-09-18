@@ -2,7 +2,7 @@ package log;
 
 import java.util.Scanner;
 
-//import static java.lang.Math.*;
+
 
 
 public class Main{
@@ -11,13 +11,21 @@ public class Main{
 
         Scanner scan = new Scanner(System.in);
         double x;
+
         int k;
-        System.out.print("Input x:  ");
+        System.out.print("Input x, [-1;1):  ");
         x = scan.nextDouble();
-        System.out.print("Input k:");
+
+        if (Math.abs(x) > 1)
+        {
+            System.out.print("Invalid input");
+            return;
+        }
+
+        System.out.print("Input k: ");
         k = scan.nextInt();
 
-        System.out.printf("log: %.3f  Taylor series: %.3f", Math.log(1   - x), TaylorS.logn(x, k));
+        System.out.printf("log: %.8f  Taylor series: %.8f", Math.log(1   - x), TaylorS.logn(x, k));
     }
 
 }

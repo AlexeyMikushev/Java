@@ -8,15 +8,16 @@ public class TaylorS {
         double epsilon = Math.pow(10, -1 * k);
         int i = 0;
 
-        while (epsilon < Math.abs(curr)){
+        do {
             result += curr;
             curr = func(x, ++i);
-        }
+        } while (epsilon < Math.abs(curr));
 
         return result;
     }
 
-    private static double func(double x, int n){
+    private static double func(double x, int n)
+    {
         return Math.pow(x, n) / (-1 * n);
     }
 }
