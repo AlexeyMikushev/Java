@@ -1,31 +1,24 @@
-package log;
-
 import java.util.Scanner;
 
-
-
-
-public class Main{
-
-    public static void main(String[] args) {
-
+public class Main {
+    public static void main(String [] args)
+    {
+        System.out.print("Input height\n");
         Scanner scan = new Scanner(System.in);
-        double x;
-
-        int k;
-        System.out.print("Input x, [-1;1):  ");
-        x = scan.nextDouble();
-
-        if (Math.abs(x) > 1)
-        {
-            System.out.print("Invalid input");
-            return;
+        int height = scan.nextInt();
+        System.out.print("\nInput width\n");
+        int width = scan.nextInt();
+        Matrix matrix = new Matrix(width, height);
+        matrix.Output();
+        matrix.SwapLines();
+        System.out.print("\n New matrix:\n");
+        matrix.Output();
+        NullLine nullline = matrix.FindNullEl();
+        for (int i = 0; i < Math.min(width, height); i++) {
+            if (nullline.check[i]) {
+                System.out.printf("number of line: %d, max element: %d\n", nullline.numOfLine[i] + 1, nullline.maxEl[i]);
+            }
         }
 
-        System.out.print("Input k: ");
-        k = scan.nextInt();
-
-        System.out.printf("log: %.8f  Taylor series: %.8f", Math.log(1   - x), TaylorS.logn(x, k));
     }
-
 }
